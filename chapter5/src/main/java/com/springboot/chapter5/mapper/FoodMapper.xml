@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.chapter5.dao.MyBatisFoodDao">
+    <select id="getFood" parameterType="long" resultType="food">
+    select id, food_name as foodName, food_type as foodType, note from t_food
+    where id = #{id}
+    </select>
+    <delete id="deleteFood" parameterType="long">
+        delete from t_food where id = #{id}
+    </delete>
+    <update id="updateFood" parameterType="food">
+        update t_food
+        <set>
+            <if test="foodName != null"> food_name = #{foodName},</if>
+            <if test="foodType != null"> food_type=#{foodType,
+                typeHandler=com.springboot.chapter5.typehandler.FoodTypeEnumTypeHandler},
+            </if>
+            <if test="note != null"> note = #{note}</if>
+        </set>
+        where id = #{id}
+    </update>
+    <insert id="insertFood" parameterType="food" useGeneratedKeys="true" keyProperty="id">
+        insert into t_food(food_name, food_type, note) values (#{foodName},
+        #{foodType, typeHandler=com.springboot.chapter5.typehandler.FoodTypeEnumTypeHandler},
+        #{note})
+    </insert>
+
+    <select id="findFoods" resultType="food">
+        select id, food_name as foodName, food_type as foodType, note from t_food
+        <where>
+            <if test="foodName != null">food_name like concat('%', #{foodName}, '%'),</if>
+            <if test="foodType != null">food_type=#{foodType,
+                typeHandler=com.springboot.chapter5.typehandler.FoodTypeEnumTypeHandler}
+            </if>
+        </where>
+    </select>
+</mapper>
