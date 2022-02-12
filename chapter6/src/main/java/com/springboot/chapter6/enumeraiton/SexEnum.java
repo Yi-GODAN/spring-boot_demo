@@ -33,7 +33,7 @@ public enum SexEnum {
         this.code = code;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 

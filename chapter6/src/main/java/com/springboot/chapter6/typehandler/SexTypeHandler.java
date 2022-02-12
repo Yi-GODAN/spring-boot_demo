@@ -27,7 +27,7 @@ public class SexTypeHandler extends BaseTypeHandler<SexEnum> {
     @Override
     public void setNonNullParameter(PreparedStatement preparedStatement, int i,
                                     SexEnum sexEnum, JdbcType jdbcType) throws SQLException {
-        preparedStatement.setInt(i, sexEnum.getSex());
+        preparedStatement.setInt(i, Integer.parseInt(sexEnum.getSex()));
     }
 
     // 通过列名读取性别
