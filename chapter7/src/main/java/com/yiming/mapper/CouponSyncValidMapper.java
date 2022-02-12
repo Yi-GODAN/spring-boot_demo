@@ -18,6 +18,6 @@ import java.util.List;
 @Mapper
 public interface CouponSyncValidMapper extends BaseMapper<CouponSyncValidVO> {
 
-    void mergeCouponBatchId(@Param("list") List<String> list, @Param("status") String status);
+    void mergeCouponBatchId(@Param("list") List<CouponSyncValidVO> syncValidVO);
 
 }

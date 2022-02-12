@@ -3,6 +3,8 @@ package com.yiming.service;
 import com.yiming.bean.CouponSyncValidVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -13,6 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CouponSyncValidService extends IService<CouponSyncValidVO> {
 
-    void mergeCouponBatchId(CouponSyncValidVO syncValidVO);
+    void mergeCouponBatchId(List<CouponSyncValidVO> syncValidVO);
 
 }

@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -22,7 +23,7 @@ import javax.annotation.Resource;
  * @since 2022-02-11
  */
 @Slf4j
-@Controller
+@RestController
 @RequestMapping("/couponSyncValid")
 public class CouponSyncValidController {
     
@@ -30,7 +31,7 @@ public class CouponSyncValidController {
     private CouponSyncValidService distributeSyncService;
 
     @PostMapping("/updateCouponBatchId")
-    public ResultWrapper updateCouponBatchId(@RequestBody CouponSyncValidVO syncValidVO) {
+    public ResultWrapper updateCouponBatchId(@RequestBody List<CouponSyncValidVO> syncValidVO) {
 
         log.info("CouponSyncValidController updateCouponBatchId syncValidVO = {}", syncValidVO);
 

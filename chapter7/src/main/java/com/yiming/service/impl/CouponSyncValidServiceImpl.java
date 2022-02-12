@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * <p>
@@ -23,11 +24,9 @@ public class CouponSyncValidServiceImpl extends ServiceImpl<CouponSyncValidMappe
     private CouponSyncValidMapper syncValidMapper;
 
     @Override
-    public void mergeCouponBatchId(CouponSyncValidVO syncValidVO) {
+    public void mergeCouponBatchId(List<CouponSyncValidVO> syncValidVO) {
 
-        syncValidMapper.mergeCouponBatchId(syncValidVO.getList(), syncValidVO.getStatus());
-
-//        syncValidMapper.insert(syncValidVO);
+        syncValidMapper.mergeCouponBatchId(syncValidVO);
 
     }
 

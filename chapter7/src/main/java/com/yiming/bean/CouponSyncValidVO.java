@@ -1,6 +1,7 @@
 package com.yiming.bean;
 
 import lombok.Data;
+import org.springframework.validation.annotation.Validated;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,18 +20,18 @@ public class CouponSyncValidVO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * batchId for list
+     * coupon batch id
      */
-    private List<String> list;
+    private String batchId;
 
     /**
      * status
      */
-    private String status;
+    private String status = "00";
 
     /**
      * Whether to cache
      */
-    private boolean isCache;
+    private boolean isCache = true;
 
 }

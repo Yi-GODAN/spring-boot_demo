@@ -13,10 +13,11 @@
         ${table.fieldNames}
     </sql>
 
-    <insert id="mergeCouponBatchId">
-        <foreach collection="list" index="index" item="item" separator=";">
-            insert into portal_coupon_distribute_sync (coupon_batch_id, status)
-            values (#{item}, #{status})
+    <insert id="mergeCouponBatchId" parameterType="java.util.List">
+        INSERT INTO "SCOTT"."portal_coupon_distribute_sync"("coupon_batch_id", "status")
+        values
+        <foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+            #{item.batchId}, #{item.status}
         </foreach>
     </insert>
 
